@@ -2,7 +2,7 @@ import React from 'react';
 
 type ButtonProps = {
   children: React.ReactNode;
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'white';
 };
 
 function Button({ children, variant = 'primary' }: ButtonProps) {
@@ -13,6 +13,9 @@ function Button({ children, variant = 'primary' }: ButtonProps) {
       break;
     case 'secondary':
       btnStyle = 'bg-secondary3/50 text-black';
+      break;
+    case 'white':
+      btnStyle = 'bg-white text-black';
       break;
   }
 

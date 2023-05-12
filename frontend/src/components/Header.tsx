@@ -8,7 +8,7 @@ import { flexIc, flexJbIc } from '../styles';
 
 function Header() {
   return (
-    <header className={` py-2 absolute w-full top-0 mx-auto`}>
+    <header className={`text-white p-2 absolute w-full top-0 mx-auto`}>
       <div className={`${flexJbIc} max-w-7xl mx-auto`}>
         {/* LOGO */}
         <Link to="/" className={`${flexIc}`}>
@@ -24,7 +24,7 @@ function Header() {
           <Button>
             <Link to="/login">Login</Link>
           </Button>
-          <Button variant="secondary">
+          <Button variant="white">
             <Link to="/register">Register</Link>
           </Button>
         </div>
