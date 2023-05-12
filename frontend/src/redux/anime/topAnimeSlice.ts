@@ -1,25 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { getTopAnime } from './animeAction';
-import { animeData, Pagination } from '../../types/anime';
-
-interface AnimeState {
-  data: animeData[];
-  pagination: Pagination;
-}
-
-const initialData: AnimeState = {
-  data: [],
-  pagination: {
-    last_visible_page: 0,
-    has_next_page: false,
-    current_page: 0,
-    items: {
-      count: 0,
-      total: 0,
-      per_page: 0,
-    },
-  },
-};
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { initialData } from '../../utils';
+import API from '../../API';
 
 const initialState = {
   isLoading: false,
@@ -28,11 +9,22 @@ const initialState = {
   topAnime: initialData,
 };
 
-export const animeSlice = createSlice({
+export const getTopAnime = createAsyncThunk(
+  'anime/top',
+  async (page: number, thunkApi) => {
+    try {
+      return await API.getTopAnime(page);
+    } catch (error) {
+      return thunkApi.rejectWithValue(error);
+    }
+  }
+);
+
+export const topAnimeSlice = createSlice({
   name: 'anime',
   initialState,
   reducers: {
-    resetState: (state) => {
+    resetTopAnimeState: (state) => {
       state.isLoading = false;
       state.isError = false;
       state.isSuccess = false;
@@ -55,6 +47,6 @@ export const animeSlice = createSlice({
   },
 });
 
-export const { resetState } = animeSlice.actions;
+export const { resetTopAnimeState } = topAnimeSlice.actions;
 
-export default animeSlice.reducer;
+export default topAnimeSlice.reducer;

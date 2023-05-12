@@ -1,12 +1,13 @@
 import React from 'react';
-import { MdStar, MdCalendarMonth } from 'react-icons/md';
+import { MdCalendarMonth } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 
 import { animeData } from '../types/anime';
 
-import { truncateText, stars } from '../utils';
+import { truncateText } from '../utils';
 
 import Button from './Button';
+import Score from './Score';
 
 type BannerProps = {
   anime: animeData;
@@ -31,14 +32,7 @@ function Banner({ anime }: BannerProps) {
         <div className="p-2">
           <h2 className="text-white text-3xl font-bold">{anime.title}</h2>
           <div className="pt-2 max-w-2xl flex justify-between font-semibold text-white text-xl">
-            <p className="flex items-center">
-              Score:{' '}
-              {stars(anime.score).map((star, index) => (
-                <span key={index} className={`${star} text-2xl`}>
-                  {<MdStar />}
-                </span>
-              ))}
-            </p>
+            <Score score={anime.score} showScoreText />
             <p className="flex items-center">
               <MdCalendarMonth className="text-secondary1 mr-1" />
               Date: <span className="text-secondary1">{anime.year}</span>

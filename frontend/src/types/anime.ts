@@ -37,7 +37,7 @@ export interface animeData {
   year: number;
 }
 
-export interface apiResponse {
-  pagination: Pagination;
+export interface AnimeState {
   data: animeData[];
+  pagination: Pagination;
 }

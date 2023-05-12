@@ -1,3 +1,5 @@
+import { AnimeState } from '../types/anime';
+
 export const truncateText = (text: string, limit: number) => {
   if (text.length <= limit) {
     return text;
@@ -17,4 +19,18 @@ export const stars = (rating: number) => {
     stars.push(starStyle);
   }
   return stars;
+};
+
+export const initialData: AnimeState = {
+  data: [],
+  pagination: {
+    last_visible_page: 0,
+    has_next_page: false,
+    current_page: 0,
+    items: {
+      count: 0,
+      total: 0,
+      per_page: 0,
+    },
+  },
 };
