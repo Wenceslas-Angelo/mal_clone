@@ -34,16 +34,10 @@ export interface animeData {
       name: string;
     }
   ];
-  aired: {
-    prop: {
-      from: {
-        year: number;
-      };
-    };
-  };
+  year: number;
 }
 
-export interface apiResponse {
-  pagination: Pagination;
+export interface AnimeState {
   data: animeData[];
+  pagination: Pagination;
 }
