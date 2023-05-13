@@ -8,7 +8,7 @@ import { flexIc, flexJbIc } from '../styles';
 
 function Header() {
   return (
-    <header className={`text-white p-2 absolute w-full top-0 mx-auto`}>
+    <header className={`text-white p-2 absolute w-full top-0 mx-auto z-10`}>
       <div className={`${flexJbIc} max-w-7xl mx-auto`}>
         {/* LOGO */}
         <Link to="/" className={`${flexIc}`}>

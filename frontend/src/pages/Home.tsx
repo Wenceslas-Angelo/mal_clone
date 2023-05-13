@@ -23,15 +23,20 @@ function Home() {
     dispatch(getSeasonsUpcoming(1));
   }, [dispatch]);
 
-  const sliderOptions = {
+  const singleSliderOptions = {
     perMove: 1,
     type: 'loop',
-    perPage: 5,
-    width: `${100}%`,
-    gap: '1rem',
     autoplay: true,
-    interval: 2000,
+    interval: 5000,
     pauseOnHover: true,
+    width: `${100}%`,
+  };
+
+  const manySliderOptions = {
+    ...singleSliderOptions,
+    interval: 2000,
+    perPage: 5,
+    gap: '1rem',
     breakpoints: {
       1154: {
         perPage: 4,
@@ -48,21 +53,25 @@ function Home() {
     },
   };
 
-  const indexBannerRandom = Math.floor(Math.random() * 24);
-
   return (
     <div>
       {/* Banner */}
-      {topAnime.data[indexBannerRandom] ? (
-        <Banner anime={topAnime.data[indexBannerRandom]} />
+      {topAnime.data[0] ? (
+        <Splide options={singleSliderOptions}>
+          {topAnime.data.slice(0, 5).map((anime) => (
+            <SplideSlide key={anime.mal_id}>
+              <Banner anime={anime} />
+            </SplideSlide>
+          ))}
+        </Splide>
       ) : (
         <Spinner />
       )}
 
       {/* Top Anime */}
       <Grid header="Top Anime">
-        <Splide options={sliderOptions}>
-          {topAnime.data.map((anime) => (
+        <Splide options={manySliderOptions}>
+          {topAnime.data.slice(5).map((anime) => (
             <SplideSlide key={anime.mal_id}>
               <Thumbnail
                 image={anime.images.jpg.large_image_url}
@@ -77,7 +86,7 @@ function Home() {
 
       {/* Season Upcoming */}
       <Grid header="Season Upcoming">
-        <Splide options={sliderOptions}>
+        <Splide options={manySliderOptions}>
           {seasonsUpcoming.data.map((anime) => (
             <SplideSlide key={anime.mal_id}>
               <Thumbnail
