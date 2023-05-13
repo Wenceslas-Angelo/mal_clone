@@ -4,22 +4,24 @@ import '@splidejs/react-splide/css';
 
 import { getTopAnime } from '../redux/anime/topAnimeSlice';
 import { getSeasonsUpcoming } from '../redux/anime/seasonsUpcomingSlice';
+import { getSeasonsNow } from '../redux/anime/seasonsNowSlice';
 
 import useDispatchSelectorType from '../hooks/useDispatchSelectorType';
 
 import Banner from '../components/Banner';
 import Spinner from '../components/Spinner';
-import Grid from '../components/Grid';
-import Thumbnail from '../components/Thumbnail';
+import Slider from '../components/Slider';
 
 function Home() {
   const { useAppDispatch, useAppSelector } = useDispatchSelectorType();
   const dispatch = useAppDispatch();
   const { topAnime } = useAppSelector((state) => state.topAnime);
   const { seasonsUpcoming } = useAppSelector((state) => state.seasonsUpcoming);
+  const { seasonsNow } = useAppSelector((state) => state.seasonsNowReducer);
 
   useEffect(() => {
     dispatch(getTopAnime(1));
+    dispatch(getSeasonsNow(1));
     dispatch(getSeasonsUpcoming(1));
   }, [dispatch]);
 
@@ -69,35 +71,27 @@ function Home() {
       )}
 
       {/* Top Anime */}
-      <Grid header="Top Anime">
-        <Splide options={manySliderOptions}>
-          {topAnime.data.slice(5).map((anime) => (
-            <SplideSlide key={anime.mal_id}>
-              <Thumbnail
-                image={anime.images.jpg.large_image_url}
-                title={anime.title}
-                score={anime.score}
-                showScore
-              />
-            </SplideSlide>
-          ))}
-        </Splide>
-      </Grid>
+      <Slider
+        animeData={topAnime.data.slice(5)}
+        header="Top Anime"
+        options={manySliderOptions}
+        showScore
+      />
 
-      {/* Season Upcoming */}
-      <Grid header="Season Upcoming">
-        <Splide options={manySliderOptions}>
-          {seasonsUpcoming.data.map((anime) => (
-            <SplideSlide key={anime.mal_id}>
-              <Thumbnail
-                image={anime.images.jpg.large_image_url}
-                title={anime.title}
-                score={anime.score}
-              />
-            </SplideSlide>
-          ))}
-        </Splide>
-      </Grid>
+      {/* Seasons Now */}
+      <Slider
+        animeData={seasonsNow.data}
+        header="Seasons Now"
+        options={manySliderOptions}
+        showScore
+      />
+
+      {/* Seasons Upcoming */}
+      <Slider
+        animeData={seasonsUpcoming.data}
+        header="Seasons Upcoming"
+        options={manySliderOptions}
+      />
     </div>
   );
 }

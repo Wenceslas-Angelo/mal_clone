@@ -1,4 +1,4 @@
-import { TOP, SEASONS_UPCOMING } from '../config';
+import { TOP, SEASONS_UPCOMING, SEASONS_NOW } from '../config';
 
 const API = {
   getTopAnime: async (page: number) => {
@@ -7,6 +7,10 @@ const API = {
   },
   getSeasonsUpcoming: async (page: number) => {
     const data = await fetch(`${SEASONS_UPCOMING}?page=${page}`);
+    return await data.json();
+  },
+  getSeasonsNow: async (page: number) => {
+    const data = await fetch(`${SEASONS_NOW}?page=${page}`);
     return await data.json();
   },
 };
