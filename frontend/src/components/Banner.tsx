@@ -31,7 +31,7 @@ function Banner({ anime }: BannerProps) {
         />
         <div className="p-2">
           <h2 className="text-white text-3xl font-bold">{anime.title}</h2>
-          <div className="pt-2 max-w-2xl flex justify-between font-semibold text-white text-xl">
+          <div className="pt-2 max-w-3xl flex justify-between font-semibold text-white text-xl">
             <Score score={anime.score} showScoreText />
             <p className="flex items-center">
               <MdCalendarMonth className="text-secondary1 mr-1" />
