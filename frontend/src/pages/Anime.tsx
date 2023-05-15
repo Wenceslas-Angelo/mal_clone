@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+
+import useDispatchSelectorType from '../hooks/useDispatchSelectorType';
+import { getAnimeInfo } from '../redux/anime/animeInfo';
+
 import Button from '../components/Button';
 import Spinner from '../components/Spinner';
 import Score from '../components/Score';
-import useDispatchSelectorType from '../hooks/useDispatchSelectorType';
-import { getAnimeInfo } from '../redux/anime/animeInfo';
 
 function Anime() {
   const { useAppDispatch, useAppSelector } = useDispatchSelectorType();

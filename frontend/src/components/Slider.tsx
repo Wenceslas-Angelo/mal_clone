@@ -12,6 +12,7 @@ type SliderProps = {
   header: string;
   options: object;
   showScore?: boolean;
+  viewAllHref?: string;
 };
 
 function Slider({
@@ -19,9 +20,10 @@ function Slider({
   header,
   options,
   showScore = false,
+  viewAllHref,
 }: SliderProps) {
   return (
-    <Grid header={header}>
+    <Grid header={header} viewAllHref={viewAllHref}>
       {animeData[0] ? (
         <Splide options={options}>
           {animeData.map((anime) => (

@@ -19,7 +19,7 @@ function Thumbnail({
 }: ThumbnailProps) {
   return (
     <div className="w-60 text-center m-2 transition-all hover:opacity-80 hover:translate-y-4">
-      <Link to={`anime/${malId}`} className="block">
+      <Link to={`/anime/${malId}`} className="block">
         <img
           src={image}
           alt={`${title} image`}
