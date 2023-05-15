@@ -31,6 +31,7 @@ function Slider({
                 title={anime.title}
                 score={anime.score}
                 showScore={showScore}
+                malId={anime.mal_id}
               />
             </SplideSlide>
           ))}

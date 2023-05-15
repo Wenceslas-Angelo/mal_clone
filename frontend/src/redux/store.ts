@@ -3,12 +3,14 @@ import { configureStore } from '@reduxjs/toolkit';
 import topAnimeReducer from './anime/topAnimeSlice';
 import seasonsUpcomingReducer from './anime/seasonsUpcomingSlice';
 import seasonsNowReducer from './anime/seasonsNowSlice';
+import animeInfoReducer from './anime/animeInfo';
 
 export const store = configureStore({
   reducer: {
     topAnime: topAnimeReducer,
     seasonsUpcoming: seasonsUpcomingReducer,
-    seasonsNowReducer: seasonsNowReducer,
+    seasonsNow: seasonsNowReducer,
+    animeInfo: animeInfoReducer,
   },
 });
 

@@ -21,7 +21,7 @@ export const getTopAnime = createAsyncThunk(
 );
 
 export const topAnimeSlice = createSlice({
-  name: 'anime',
+  name: 'animeTop',
   initialState,
   reducers: {
     resetTopAnimeState: (state) => {

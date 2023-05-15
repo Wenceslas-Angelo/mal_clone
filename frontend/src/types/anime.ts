@@ -35,6 +35,31 @@ export interface animeData {
     }
   ];
   year: number;
+  type: string;
+  popularity: number;
+  source: string;
+  season: string;
+  producers: [
+    {
+      mal_id: number;
+      name: string;
+    }
+  ];
+  studios: [
+    {
+      mal_id: number;
+      name: string;
+    }
+  ];
+  demographics: [
+    {
+      mal_id: number;
+      name: string;
+    }
+  ];
+  aired: {
+    string: string;
+  };
 }
 
 export interface AnimeState {
