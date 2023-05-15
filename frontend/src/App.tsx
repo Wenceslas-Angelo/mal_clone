@@ -6,6 +6,7 @@ import Header from './components/Header';
 
 //Pages
 import Home from './pages/Home';
+import Anime from './pages/Anime';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/anime/:id" element={<Anime />} />
       </Routes>
     </div>
   );

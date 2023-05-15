@@ -17,7 +17,7 @@ function Home() {
   const dispatch = useAppDispatch();
   const { topAnime } = useAppSelector((state) => state.topAnime);
   const { seasonsUpcoming } = useAppSelector((state) => state.seasonsUpcoming);
-  const { seasonsNow } = useAppSelector((state) => state.seasonsNowReducer);
+  const { seasonsNow } = useAppSelector((state) => state.seasonsNow);
 
   useEffect(() => {
     dispatch(getTopAnime(1));
@@ -36,7 +36,6 @@ function Home() {
 
   const manySliderOptions = {
     ...singleSliderOptions,
-    interval: 2000,
     perPage: 5,
     gap: '1rem',
     breakpoints: {
@@ -72,7 +71,7 @@ function Home() {
 
       {/* Top Anime */}
       <Slider
-        animeData={topAnime.data.slice(5)}
+        animeData={topAnime.data}
         header="Top Anime"
         options={manySliderOptions}
         showScore

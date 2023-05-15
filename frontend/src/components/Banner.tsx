@@ -53,7 +53,7 @@ function Banner({ anime }: BannerProps) {
             {truncateText(anime.synopsis, 500)}
           </p>
           <Button>
-            <Link to="/">More information</Link>
+            <Link to={`/anime/${anime.mal_id}`}>More information</Link>
           </Button>
         </div>
       </div>

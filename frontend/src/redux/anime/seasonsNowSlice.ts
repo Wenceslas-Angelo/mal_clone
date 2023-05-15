@@ -21,7 +21,7 @@ export const getSeasonsNow = createAsyncThunk(
 );
 
 export const seasonsNowSlice = createSlice({
-  name: 'anime',
+  name: 'animeSeasonsNow',
   initialState,
   reducers: {
     resetSeasonsNowState: (state) => {
