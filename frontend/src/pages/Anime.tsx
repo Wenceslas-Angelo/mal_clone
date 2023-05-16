@@ -21,6 +21,18 @@ function Anime() {
     }
   }, [dispatch]);
 
+  type arrayType = {
+    mal_id: number;
+    name: string;
+  };
+
+  const arrayTransformation = (array: Array<arrayType>) =>
+    array.map((value, index) => (
+      <span key={value.mal_id} className="text-white/70">
+        {index < array.length - 1 ? `${value.name}, ` : value.name}
+      </span>
+    ));
+
   return anime ? (
     <div>
       {/* BANNER */}
@@ -50,13 +62,7 @@ function Anime() {
               <h2 className="text-3xl font-semibold text-white">Synopsis</h2>
               <p className="text-white text-2xl font-medium">
                 {anime.genres.length > 1 ? 'Genres' : 'Genre'}:{' '}
-                {anime.genres.map((genre, index) => (
-                  <span key={genre.mal_id} className="text-white/70">
-                    {index < anime.genres.length - 1
-                      ? `${genre.name}, `
-                      : genre.name}
-                  </span>
-                ))}
+                {arrayTransformation(anime.genres)}
               </p>
             </div>
             <p className="text-white/80 text-md">{anime.synopsis}</p>
@@ -93,23 +99,11 @@ function Anime() {
             <div className="bg-secondary3/30 rounded-lg p-2 flex justify-between">
               <p className="text-white text-2xl font-medium">
                 {anime.producers.length > 1 ? 'Producers' : 'Producer'}:{' '}
-                {anime.producers.map((producer, index) => (
-                  <span key={producer.mal_id} className="text-white/70">
-                    {index < anime.producers.length - 1
-                      ? `${producer.name}, `
-                      : producer.name}
-                  </span>
-                ))}
+                {arrayTransformation(anime.producers)}
               </p>
               <p className="text-white text-2xl font-medium">
                 {anime.studios.length > 1 ? 'Studios' : 'Studio'}:{' '}
-                {anime.studios.map((studio, index) => (
-                  <span key={studio.mal_id} className="text-white/70">
-                    {index < anime.studios.length - 1
-                      ? `${studio.name}, `
-                      : studio.name}
-                  </span>
-                ))}
+                {arrayTransformation(anime.studios)}
               </p>
             </div>
           </div>

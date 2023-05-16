@@ -3,7 +3,6 @@ import { MdCalendarMonth } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 
 import { animeData } from '../types/anime';
-
 import { truncateText } from '../utils';
 
 import Button from './Button';
