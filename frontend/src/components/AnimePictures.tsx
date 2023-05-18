@@ -16,7 +16,7 @@ function AnimePictures({ id }: AnimeInfoProps) {
     }
   }, [dispatch]);
   return (
-    <div className="grid gap-1 grid-cols-5 py-5">
+    <div className="grid gap-2 grid-cols-[repeat(auto-fill,minmax(200px,_1fr))] py-5">
       {animePictures?.map((animePicture, index) => (
         <img
           key={`${id}-${index}`}

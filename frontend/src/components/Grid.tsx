@@ -21,7 +21,15 @@ function Grid({ header, children, viewAllHref = '' }: GridProps) {
           </Link>
         )}
       </div>
-      <div className={'flex justify-between flex-wrap gap-y-2'}>{children}</div>
+      <div
+        className={
+          viewAllHref
+            ? 'flex justify-between flex-wrap gap-y-2'
+            : 'grid gap-2 grid-cols-[repeat(auto-fill,minmax(200px,_1fr))]'
+        }
+      >
+        {children}
+      </div>
     </div>
   );
 }

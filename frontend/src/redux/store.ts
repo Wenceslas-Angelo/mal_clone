@@ -5,6 +5,7 @@ import seasonsUpcomingReducer from './anime/seasonsUpcomingSlice';
 import seasonsNowReducer from './anime/seasonsNowSlice';
 import animeInfoReducer from './anime/animeInfo';
 import animePicturesReducer from './anime/animePictures';
+import animeCharactersReducer from './anime/animeCharacters';
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ export const store = configureStore({
     seasonsNow: seasonsNowReducer,
     animeInfo: animeInfoReducer,
     animePictures: animePicturesReducer,
+    animeCharacters: animeCharactersReducer,
   },
 });
 

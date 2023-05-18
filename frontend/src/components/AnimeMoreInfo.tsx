@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import AnimePictures from './AnimePictures';
 import { AnimeInfoProps } from '../types/anime';
+import AnimeCharacters from './AnimeCharacters';
 
 function AnimeMoreInfo({ id }: AnimeInfoProps) {
   const [tabActive, setTabActive] = useState('pictures');
@@ -15,6 +16,9 @@ function AnimeMoreInfo({ id }: AnimeInfoProps) {
   switch (tabActive) {
     case 'pictures':
       animeInformationShow = <AnimePictures id={id} />;
+      break;
+    case 'characters':
+      animeInformationShow = <AnimeCharacters id={id} />;
       break;
   }
   return (
