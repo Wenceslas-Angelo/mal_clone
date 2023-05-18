@@ -7,6 +7,7 @@ import { getAnimeInfo } from '../redux/anime/animeInfo';
 import Button from '../components/Button';
 import Spinner from '../components/Spinner';
 import Score from '../components/Score';
+import AnimeMoreInfo from '../components/AnimeMoreInfo';
 
 function Anime() {
   const { useAppDispatch, useAppSelector } = useDispatchSelectorType();
@@ -110,16 +111,7 @@ function Anime() {
         </div>
       </div>
 
-      <div className="text-3xl capitalize p-5 max-w-7xl m-auto">
-        <ul className="flex justify-between items-center ">
-          <li>Reviews</li>
-          <li>News</li>
-          <li>Recommendations</li>
-          <li>Stats</li>
-          <li>Pictures</li>
-          <li>Character</li>
-        </ul>
-      </div>
+      <AnimeMoreInfo id={id} />
     </div>
   ) : (
     <Spinner />

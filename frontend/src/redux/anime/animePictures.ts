@@ -1,37 +1,36 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import API from '../../API';
-import { animeData } from '../../types/anime';
 
 interface animeInfoType {
   isLoading: boolean;
   isError: boolean;
   isSuccess: boolean;
-  anime: animeData | null;
+  animePictures: [{ jpg: { image_url: string } }] | null;
 }
 
 const initialState: animeInfoType = {
   isLoading: false,
   isError: false,
   isSuccess: false,
-  anime: null,
+  animePictures: null,
 };
 
-export const getAnimeInfo = createAsyncThunk(
-  'anime/information',
+export const getAnimePictures = createAsyncThunk(
+  'anime/informationPictures',
   async (id: number, thunkApi) => {
     try {
-      return await API.getAnimeInfo(id, 'full');
+      return await API.getAnimeInfo(id, 'pictures');
     } catch (error) {
       return thunkApi.rejectWithValue(error);
     }
   }
 );
 
-export const animeInfoSlice = createSlice({
-  name: 'animeInformation',
+export const animePicturesSlice = createSlice({
+  name: 'animeInformationPictures',
   initialState,
   reducers: {
-    resetAnimeInfoState: (state) => {
+    resetAnimePicturesState: (state) => {
       state.isLoading = false;
       state.isError = false;
       state.isSuccess = false;
@@ -39,21 +38,21 @@ export const animeInfoSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getAnimeInfo.pending, (state) => {
+      .addCase(getAnimePictures.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(getAnimeInfo.fulfilled, (state, action) => {
+      .addCase(getAnimePictures.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.anime = action.payload;
+        state.animePictures = action.payload;
       })
-      .addCase(getAnimeInfo.rejected, (state) => {
+      .addCase(getAnimePictures.rejected, (state) => {
         state.isLoading = false;
         state.isError = true;
       });
   },
 });
 
-export const { resetAnimeInfoState } = animeInfoSlice.actions;
+export const { resetAnimePicturesState } = animePicturesSlice.actions;
 
-export default animeInfoSlice.reducer;
+export default animePicturesSlice.reducer;

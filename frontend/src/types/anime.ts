@@ -66,3 +66,7 @@ export interface AnimeState {
   data: animeData[];
   pagination: Pagination;
 }
+
+export interface AnimeInfoProps {
+  id: string | undefined;
+}
